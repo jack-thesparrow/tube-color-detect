@@ -53,7 +53,7 @@ git clone https://github.com/jack-thesparrow/tube-color-detect.git
 cd tube-color-detect
 ```
 
-All the dependencies are installed in requirements.txt. Install them by running the following command in terminal.
+All the dependencies are listed in the requirements.txt. Install them by running the following command in terminal.
 
 ```shell
 pip install -r requirements.txt
