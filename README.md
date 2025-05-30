@@ -6,5 +6,6 @@ A work in progress program that takes image of bottles containing liquid of diff
 
 # Sample Input Images
 
-![alt text](https://github.com/[jack-thesparrow]/[tube-color-detect]/blob/[main]/bottles.jpg?raw=true)
-
+<div allign = "center">
+    <img align="center" src ="assets/bottles.jpg" width ="400">
+</div>
