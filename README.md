@@ -7,9 +7,9 @@ A work in progress program that takes image of bottles containing liquid of diff
 ### Sample Input Images
 
 <div allign = "center">
-    <img align="center" src ="assets/bottles0.jpg" width ="250">
-    <img align="center" src ="assets/bottles1.png" width ="265">
-    <img align="center" src ="assets/bottles4.jpg" width ="322">
+    <img align="center" src ="assets/bottles0.jpg" width ="240">
+    <img align="center" src ="assets/bottles1.png" width ="255">
+    <img align="center" src ="assets/bottles4.jpg" width ="312">
 </div>
 
 ### Objectives of the program
