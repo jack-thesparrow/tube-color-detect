@@ -1,5 +1,6 @@
 import cv2 as cv
 import numpy as np
+import os
 
 
 # To load and preprocess the image so that it can be handled properly
@@ -35,21 +36,31 @@ def find_bottle_contour(edged_img):
     return bottle_contour
 
 
-def bottle_anotation(contours, img):
+def bottle_annotation(contours, img, output_path):
     for cnt in contours:
         x, y, w, h = cv.boundingRect(cnt)
         cv.rectangle(img, (x, y), (x + w, y + h), (0, 255, 0), 2)
 
-    cv.imwrite("annotated_result.png", img)
+    cv.imwrite(output_path, img)
 
 
-def main(img_path):
-    img, hsv, edged = load_and_preprocess(img_path)
-    # cv.imshow("Edges", edged)
-    # cv.waitKey(0)
-    bottle_contour = find_bottle_contour(edged)
-    bottle_anotation(bottle_contour, img)
+def main(images_folder):
+    output_folder = "output"
+    os.makedirs(output_folder, exist_ok=True)
+
+    for filename in os.listdir(images_folder):
+        if filename.lower().endswith((".jpg", ".jpeg", ".png", ".bmp")):
+            full_path = os.path.join(images_folder, filename)
+            try:
+                img, hsv, edged = load_and_preprocess(full_path)
+                contours = find_bottle_contour(edged)
+                output_filename = os.path.splitext(filename)[0] + "_annotated.png"
+                output_path = os.path.join(output_folder, output_filename)
+                bottle_annotation(contours, img, output_path)
+                print(f"Processed and saved: {output_path}")
+            except Exception as e:
+                print(f"Error processing {filename}: {e}")
 
 
 if __name__ == "__main__":
-    main(r"assets/bottles.jpg")
+    main("assets")
