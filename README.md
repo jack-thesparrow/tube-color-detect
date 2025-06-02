@@ -7,9 +7,9 @@ A work in progress program that takes image of bottles containing liquid of diff
 ### Sample Input Images
 
 <div allign = "center">
-    <img align="center" src ="assets/bottles0.jpg" width ="240">
-    <img align="center" src ="assets/bottles1.png" width ="255">
-    <img align="center" src ="assets/bottles4.jpg" width ="312">
+    <img align="center" src ="assets/bottle0.jpeg" width ="200">
+    <img align="center" src ="assets/bottle1.jpeg" width ="200">
+    <img align="center" src ="assets/bottle2.jpeg" width ="200">
 </div>
 
 ### Objectives of the program
@@ -66,8 +66,6 @@ To run the program, while being in the tube-color-detect directory, run:
 python main.py
 ```
 
-
-
 ##### Then, make a different branch for adding features, so that you dont pollute the main branch. (say the feature is a class for bottles) proceed as below.
 
 ```git
@@ -102,5 +100,3 @@ git push origin feature/class-bottle
    git checkout main
    git pull origin
    ```
-   
-   
