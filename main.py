@@ -29,6 +29,9 @@ def crop_img(img, crop_w=None, crop_h=None, x_start=None, y_start=None):
 # Load and preprocess image (crop, grayscale, HSV, edge detection)
 def load_and_preprocess(img_path, crop_w=None, crop_h=None, x_start=None, y_start=None):
     img = cv.imread(img_path)
+
+    # So that resolution remains same to get desired crop(as screenshot may be from different devices)
+    img = cv.resize(img, (540, 1200))
     if img is None:
         raise FileNotFoundError(f"Could not load image at path: {img_path}")
 
