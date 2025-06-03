@@ -40,4 +40,4 @@ def main(images_folder):
 
 
 if __name__ == "__main__":
-    main("assets")
+    main("backup")
