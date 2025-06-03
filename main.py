@@ -70,6 +70,16 @@ def bottle_annotation(contours, img, output_path, tubes_out_path, base_name):
         )
         cv.rectangle(img, (x, y), (x + w, y + h), (0, 255, 0), 2)
 
+    # To annotate the number of bottles in the image
+    cv.putText(
+        img,
+        f"no. of tubes: {i+1}",
+        (10, 740),
+        cv.FONT_HERSHEY_SIMPLEX,
+        0.5,
+        (1, 255, 0),
+    )
+
     # Save the annotated image
     cv.imwrite(output_path, img)
 
