@@ -1,6 +1,7 @@
 import cv2 as cv
 import numpy as np
 import os
+import json
 
 
 # === Scale HSV from human-friendly to OpenCV format ===
@@ -16,8 +17,7 @@ known_colors = {
     "red": scale_hsv(359.2, 62.6, 89.0),
     "tan": scale_hsv(32.7, 35.6, 87.1),
     "rose": scale_hsv(359.3, 35.3, 98.8),
-    # Purple updated here with average saturation and value around your ranges
-    "purple": [138, 183, 199],
+    "purple": [138, 183, 199],  # manually tuned values for purple
     "blue": scale_hsv(219.9, 76.2, 98.0),
     "white": scale_hsv(180.0, 3.7, 94.1),
     "orange": scale_hsv(32.2, 87.7, 99.2),
@@ -25,7 +25,7 @@ known_colors = {
     "lime": scale_hsv(119.1, 63.4, 79.2),
 }
 
-# === Per-Color Tolerances (H, S, V) with updated purple ===
+# === Per-Color Tolerances (H, S, V) ===
 tolerances = {
     "red": (5, 40, 40),
     "tan": (5, 40, 40),
@@ -87,8 +87,34 @@ def largest_vertical_region_height(mask):
     return max_height
 
 
+def split_large_segments(merged_segments, average_height, threshold=1.5):
+    """
+    Split segments that are taller than threshold * average_height into multiple sub-segments.
+    """
+    split_segments = []
+    for y_start, y_end, color_name in merged_segments:
+        height = y_end - y_start
+
+        if height > threshold * average_height and color_name != "unknown":
+            splits = int(round(height / average_height))
+            split_height = height // splits
+
+            for i in range(splits):
+                sub_start = y_start + i * split_height
+                sub_end = y_start + (i + 1) * split_height if i < splits - 1 else y_end
+                split_segments.append((sub_start, sub_end, color_name))
+        else:
+            split_segments.append((y_start, y_end, color_name))
+    return split_segments
+
+
 def annotate_colors_vertically(
-    img, known_colors, tolerances, num_bands=6, min_color_region_height=80
+    img,
+    known_colors,
+    tolerances,
+    num_bands=6,
+    min_color_region_height=20,
+    split_threshold=1.5,
 ):
     h, w = img.shape[:2]
     band_height = h // num_bands
@@ -98,6 +124,7 @@ def annotate_colors_vertically(
     band_colors = []
     band_confidences = []
 
+    # Step 1: Detect color per band
     for i in range(num_bands):
         y_start = i * band_height
         y_end = (i + 1) * band_height if i != num_bands - 1 else h
@@ -123,49 +150,73 @@ def annotate_colors_vertically(
         band_colors.append(best_color)
         band_confidences.append(confidence)
 
-    # Merge consecutive bands with the same color
+    # Step 2: Merge consecutive bands with same color
     merged = []
     start = 0
     for i in range(1, num_bands + 1):
         if i == num_bands or band_colors[i] != band_colors[start]:
-            merged.append((start, i - 1, band_colors[start]))
+            y_start = start * band_height
+            y_end = (i * band_height) if i != num_bands else h
+            merged.append((y_start, y_end, band_colors[start]))
             start = i
 
-    # Print and annotate merged bands
-    for start_idx, end_idx, color_name in merged:
-        y_start = start_idx * band_height
-        y_end = (end_idx + 1) * band_height if end_idx != num_bands - 1 else h
+    # Step 3: Calculate average segment height
+    total_height = sum(y_end - y_start for y_start, y_end, _ in merged)
+    count_segments = len(merged)
+    average_height = total_height / count_segments if count_segments else 0
+
+    # Step 4: Split large segments into sub-segments
+    split_segments = split_large_segments(
+        merged, average_height, threshold=split_threshold
+    )
+
+    # Step 5: Annotate and prepare JSON output
+    json_output = []
+    for y_start, y_end, color_name in split_segments:
         center_y = (y_start + y_end) // 2
 
-        print(f"Bands {start_idx}–{end_idx}: {color_name}")
-
-        center_x = w // 2
         cv.putText(
             annotated,
             color_name,
-            (center_x - 30, center_y),
+            (w // 2 - 20, center_y),
             cv.FONT_HERSHEY_SIMPLEX,
-            0.7,
+            0.5,
             (0, 0, 0),
             2,
             cv.LINE_AA,
         )
 
-    return annotated
+        json_output.append(
+            {
+                "start_pixel": y_start,
+                "end_pixel": y_end,
+                "color": color_name,
+                "height": y_end - y_start,
+            }
+        )
+
+    return annotated, json_output
 
 
 # === Run on Uploaded Image ===
 if __name__ == "__main__":
     script_dir = os.path.dirname(os.path.abspath(__file__))
     img_path = os.path.join(
-        script_dir, "../tubes/bottle0_tube_strip4.png"
+        script_dir, "../tubes/bottle11_tube_strip6.png"
     )  # Update path as needed
     img = cv.imread(img_path)
     assert img is not None, "Image not loaded"
 
-    annotated_img = annotate_colors_vertically(
-        img, known_colors, tolerances, num_bands=6, min_color_region_height=20
+    annotated_img, color_segments = annotate_colors_vertically(
+        img,
+        known_colors,
+        tolerances,
+        num_bands=6,
+        min_color_region_height=20,
+        split_threshold=1.5,
     )
+
+    print(json.dumps(color_segments, indent=4))
 
     cv.imshow("Annotated", annotated_img)
     cv.waitKey(0)
