@@ -34,6 +34,12 @@ A work in progress program that takes image of bottles containing liquid of diff
 
 5. You can you VScode terminal or just rawdawg it via terminal in linux.
 
+## How to use the program
+```shell
+python main.py path/to/your/image
+```
+<I>The saved output will be stored in tube_analysis.json</I>
+
 ### 📁 File Structure
 
 - `assets/` - Contains the input for the program.
