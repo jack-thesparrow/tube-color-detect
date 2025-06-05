@@ -1,4 +1,6 @@
 opencv-python
+shutil
+argparse
 numpy
 scikit-learn
 matplotlib

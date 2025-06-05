@@ -1,120 +1,50 @@
 {
-  "bottle11_tube_strip0.png": {
+  "bottle36_tube_strip0.png": {
     "order": [
+      "blue",
+      "lime",
       "red",
-      "orange",
-      "orange",
-      "blue",
       "red",
-      "blue"
-    ]
-  },
-  "bottle11_tube_strip1.png": {
-    "order": [
-      "lime",
-      "lime",
-      "orange",
-      "purple",
-      "lime",
-      "lime"
-    ]
-  },
-  "bottle11_tube_strip2.png": {
-    "order": [
-      "red",
-      "blue",
-      "blue",
-      "blue",
-      "lime",
-      "orange"
-    ]
-  },
-  "bottle11_tube_strip3.png": {
-    "order": [
-      "empty",
-      "empty",
-      "empty",
-      "empty",
-      "empty",
-      "empty",
-      "empty"
-    ]
-  },
-  "bottle11_tube_strip4.png": {
-    "order": [
-      "purple",
-      "orange",
-      "lime",
-      "purple",
-      "purple",
       "purple"
     ]
   },
-  "bottle11_tube_strip5.png": {
+  "bottle36_tube_strip1.png": {
     "order": [
-      "empty",
-      "empty",
-      "empty",
-      "empty",
-      "empty",
-      "empty",
-      "empty"
+      "blue",
+      "red",
+      "purple",
+      "blue",
+      "orange"
     ]
   },
-  "bottle11_tube_strip6.png": {
+  "bottle36_tube_strip2.png": {
     "order": [
-      "purple",
-      "red",
-      "red",
       "orange",
-      "red",
-      "blue"
-    ]
-  },
-  "bottle2_tube_strip0.png": {
-    "order": [
-      "purple",
       "lime",
-      "cyan",
-      "cyan",
-      "cyan"
-    ]
-  },
-  "bottle2_tube_strip1.png": {
-    "order": [
-      "lime",
-      "rose"
-    ]
-  },
-  "bottle2_tube_strip2.png": {
-    "order": [
-      "rose",
-      "blue"
-    ]
-  },
-  "bottle2_tube_strip3.png": {
-    "order": [
-      "rose",
-      "lime",
-      "blue",
-      "tan"
-    ]
-  },
-  "bottle2_tube_strip4.png": {
-    "order": [
-      "cyan",
-      "blue",
+      "orange",
       "purple",
       "orange"
     ]
   },
-  "bottle2_tube_strip5.png": {
+  "bottle36_tube_strip3.png": {
     "order": [
-      "orange",
+      "empty",
+      "empty",
+      "empty",
+      "empty",
+      "empty"
+    ]
+  },
+  "bottle36_tube_strip4.png": {
+    "order": [
+      "lime",
+      "red",
+      "blue",
+      "blue",
       "lime"
     ]
   },
-  "bottle2_tube_strip6.png": {
+  "bottle36_tube_strip5.png": {
     "order": [
       "empty",
       "empty",
@@ -123,27 +53,13 @@
       "empty"
     ]
   },
-  "bottle2_tube_strip7.png": {
+  "bottle36_tube_strip6.png": {
     "order": [
+      "orange",
+      "purple",
+      "purple",
       "red",
-      "cyan",
-      "rose",
-      "red"
-    ]
-  },
-  "bottle2_tube_strip8.png": {
-    "order": [
-      "empty",
-      "empty",
-      "empty",
-      "empty",
-      "empty"
-    ]
-  },
-  "bottle2_tube_strip9.png": {
-    "order": [
-      "tan",
-      "blue"
+      "lime"
     ]
   }
 }
