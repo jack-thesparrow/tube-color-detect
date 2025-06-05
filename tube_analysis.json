@@ -1,65 +1,90 @@
 {
-  "bottle36_tube_strip0.png": {
+  "bottle0_tube_strip0.png": {
     "order": [
-      "blue",
-      "lime",
       "red",
-      "red",
+      "tan",
+      "rose",
       "purple"
     ]
   },
-  "bottle36_tube_strip1.png": {
+  "bottle0_tube_strip1.png": {
+    "order": [
+      "blue",
+      "white",
+      "rose",
+      "orange"
+    ]
+  },
+  "bottle0_tube_strip10.png": {
     "order": [
       "blue",
       "red",
+      "cyan",
+      "lime"
+    ]
+  },
+  "bottle0_tube_strip2.png": {
+    "order": [
       "purple",
-      "blue",
+      "white",
+      "white",
+      "rose"
+    ]
+  },
+  "bottle0_tube_strip3.png": {
+    "order": [
+      "cyan",
+      "purple",
+      "purple",
       "orange"
     ]
   },
-  "bottle36_tube_strip2.png": {
+  "bottle0_tube_strip4.png": {
     "order": [
-      "orange",
       "lime",
-      "orange",
-      "purple",
-      "orange"
+      "lime",
+      "cyan",
+      "lime"
     ]
   },
-  "bottle36_tube_strip3.png": {
+  "bottle0_tube_strip5.png": {
     "order": [
-      "empty",
+      "orange",
+      "cyan",
+      "tan",
+      "tan"
+    ]
+  },
+  "bottle0_tube_strip6.png": {
+    "order": [
+      "orange",
+      "blue",
+      "rose",
+      "white"
+    ]
+  },
+  "bottle0_tube_strip7.png": {
+    "order": [
       "empty",
       "empty",
       "empty",
       "empty"
     ]
   },
-  "bottle36_tube_strip4.png": {
+  "bottle0_tube_strip8.png": {
     "order": [
-      "lime",
+      "blue",
       "red",
-      "blue",
-      "blue",
-      "lime"
+      "tan",
+      "red"
     ]
   },
-  "bottle36_tube_strip5.png": {
+  "bottle0_tube_strip9.png": {
     "order": [
-      "empty",
       "empty",
       "empty",
       "empty",
       "empty"
-    ]
-  },
-  "bottle36_tube_strip6.png": {
-    "order": [
-      "orange",
-      "purple",
-      "purple",
-      "red",
-      "lime"
     ]
   }
 }
