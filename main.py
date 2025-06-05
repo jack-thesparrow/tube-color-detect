@@ -1,106 +1,98 @@
 import cv2 as cv
+import shutil
 import numpy as np
 import os
+import argparse
+from modules.imageProcess import crop_img, load_and_preprocess
+from modules.bottleProcess import bottle_annotation, find_bottle_contour
+from modules.tube_analyzer import analyze_tubes
 
 
-# To crop the image with adjustable start points and crop size (rectangular)
-def crop_img(img, crop_w=None, crop_h=None, x_start=None, y_start=None):
-    height, width = img.shape[:2]
-    print(f"Original image size: {width}px x {height}px")
-
-    # Fallback default parameters, if user does not give arguments to function
-    if crop_w is None:
-        crop_w = width
-    if crop_h is None:
-        crop_h = height
-
-    # Start Coordinates will be from top left corner by default
-    if x_start is None:
-        x_start = 0
-    if y_start is None:
-        y_start = 0
-
-    # So that the cropped image remains within the input image bound
-    x_start = max(0, min(x_start, width - crop_w))
-    y_start = max(0, min(y_start, height - crop_h))
-
-    crop = img[y_start : y_start + crop_h, x_start : x_start + crop_w]
-    print(f"Cropped image shape: {crop.shape}")
-    return crop
-
-
-def load_and_preprocess(img_path, crop_w=None, crop_h=None, x_start=None, y_start=None):
-    img = cv.imread(img_path)
-    if img is None:
-        raise FileNotFoundError(f"Could not load image at path: {img_path}")
-
-    # Yeahhhh we crop to get the wanted region
-    img = crop_img(img, crop_w=crop_w, crop_h=crop_h, x_start=x_start, y_start=y_start)
-
-    gray = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
-    hsv = cv.cvtColor(img, cv.COLOR_BGR2HSV)
-    blur = cv.GaussianBlur(gray, (3, 3), 0)
-    canny = cv.Canny(blur, 180, 400)
-
-    return img, hsv, canny
-
-
-def find_bottle_contour(eroded_img):
-    contours, hierarchies = cv.findContours(
-        eroded_img, cv.RETR_EXTERNAL, cv.CHAIN_APPROX_SIMPLE
+def process_image(
+    image_path, output_folder, tubes_out_folder, crop_x, crop_y, crop_w, crop_h
+):
+    img, hsv, eroded = load_and_preprocess(
+        image_path,
+        crop_w=crop_w,
+        crop_h=crop_h,
+        x_start=crop_x,
+        y_start=crop_y,
     )
-    bottle_contour = [cnt for cnt in contours if cv.boundingRect(cnt)[3] > 40]
-    bottle_contour.sort(key=lambda cnt: cv.boundingRect(cnt)[0])
-    return bottle_contour
+    contours = find_bottle_contour(eroded)
+    base_name = os.path.splitext(os.path.basename(image_path))[0]
+    output_path = os.path.join(output_folder, f"{base_name}_annotated.png")
+    bottle_annotation(contours, img, output_path, tubes_out_folder, base_name)
+    print(f"Processed and saved: {output_path}")
 
 
-def bottle_annotation(contours, img, output_path):
-    i = 0
-    for cnt in contours:
-        x, y, w, h = cv.boundingRect(cnt)
-        cv.putText(
-            img,
-            "tube" + str(i),
-            (x, y - 5),
-            cv.FONT_HERSHEY_SIMPLEX,
-            0.45,
-            (0, 255, 0),
-        )
-        cv.rectangle(img, (x, y), (x + w, y + h), (0, 255, 0), 2)
-        i += 1
-
-    cv.imwrite(output_path, img)
-
-
-def main(images_folder):
+def main(input_path):
     output_folder = "output"
+    tubes_out_folder = "tubes"
     os.makedirs(output_folder, exist_ok=True)
+    os.makedirs(tubes_out_folder, exist_ok=True)
 
-    # To get the all the bottles in one frame reducing the distraction
-    x_start = 330
-    y_start = 240
+    # Cropping parameters
+    crop_x = 330
+    crop_y = 240
     crop_w = 540
     crop_h = 780
 
-    for filename in os.listdir(images_folder):
-        if filename.lower().endswith((".jpg", ".jpeg", ".png", ".bmp")):
-            full_path = os.path.join(images_folder, filename)
-            try:
-                img, hsv, eroded = load_and_preprocess(
-                    full_path,
-                    crop_w=crop_w,
-                    crop_h=crop_h,
-                    x_start=x_start,
-                    y_start=y_start,
-                )
-                contours = find_bottle_contour(eroded)
-                output_filename = os.path.splitext(filename)[0] + "_annotated.png"
-                output_path = os.path.join(output_folder, output_filename)
-                bottle_annotation(contours, img, output_path)
-                print(f"Processed and saved: {output_path}")
-            except Exception as e:
-                print(f"Error processing {filename}: {e}")
+    if os.path.isdir(input_path):
+        for filename in os.listdir(input_path):
+            if filename.lower().endswith((".jpg", ".jpeg", ".png", ".bmp")):
+                full_path = os.path.join(input_path, filename)
+                try:
+                    process_image(
+                        full_path,
+                        output_folder,
+                        tubes_out_folder,
+                        crop_x,
+                        crop_y,
+                        crop_w,
+                        crop_h,
+                    )
+                except Exception as e:
+                    print(f"Error processing {filename}: {e}")
+    elif os.path.isfile(input_path):
+        try:
+            process_image(
+                input_path,
+                output_folder,
+                tubes_out_folder,
+                crop_x,
+                crop_y,
+                crop_w,
+                crop_h,
+            )
+        except Exception as e:
+            print(f"Error processing {input_path}: {e}")
+    else:
+        print("Error: Invalid input path.")
+
+    analyze_tubes(tubes_out_folder, save_json=True)
+
+    # === Clean up folders ===
+    try:
+        shutil.rmtree(tubes_out_folder)
+        print(f"Deleted folder: {tubes_out_folder}")
+    except Exception as e:
+        print(f"Error deleting {tubes_out_folder}: {e}")
+
+    try:
+        shutil.rmtree(output_folder)
+        print(f"Deleted folder: {output_folder}")
+    except Exception as e:
+        print(f"Error deleting {output_folder}: {e}")
 
 
 if __name__ == "__main__":
-    main("assets")
+    parser = argparse.ArgumentParser(description="Process image(s) and analyze tubes.")
+    parser.add_argument(
+        "input",
+        nargs="?",
+        default="assets",
+        help="Image file or folder (default: backup)",
+    )
+    args = parser.parse_args()
+
+    main(args.input)
