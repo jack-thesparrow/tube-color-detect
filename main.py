@@ -3,6 +3,9 @@ import numpy as np
 import os
 from modules.imageProcess import crop_img, load_and_preprocess
 from modules.bottleProcess import bottle_annotation, find_bottle_contour
+from modules.tube_analyzer import analyze_tubes
+
+from modules.tube_analyzer import analyze_tubes
 
 
 def main(images_folder):
@@ -37,6 +40,8 @@ def main(images_folder):
                 print(f"Processed and saved: {output_path}")
             except Exception as e:
                 print(f"Error processing {filename}: {e}")
+
+    results = analyze_tubes("tubes", save_json=True)
 
 
 if __name__ == "__main__":

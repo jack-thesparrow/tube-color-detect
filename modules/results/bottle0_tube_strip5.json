@@ -1,0 +1,205 @@
+{
+  "image": "bottle0_tube_strip5.png",
+  "segments": [
+    {
+      "segment_id": 1,
+      "start_pixel": 0,
+      "end_pixel": 1,
+      "height": 1,
+      "mean_hue": 61.3968253968254,
+      "color_name": "empty"
+    },
+    {
+      "segment_id": 2,
+      "start_pixel": 1,
+      "end_pixel": 2,
+      "height": 1,
+      "mean_hue": 73.17460317460318,
+      "color_name": "empty"
+    },
+    {
+      "segment_id": 3,
+      "start_pixel": 2,
+      "end_pixel": 3,
+      "height": 1,
+      "mean_hue": 85.34920634920636,
+      "color_name": "empty"
+    },
+    {
+      "segment_id": 4,
+      "start_pixel": 3,
+      "end_pixel": 21,
+      "height": 18,
+      "mean_hue": 109.29629629629628,
+      "color_name": "empty"
+    },
+    {
+      "segment_id": 5,
+      "start_pixel": 21,
+      "end_pixel": 22,
+      "height": 1,
+      "mean_hue": 98.71428571428571,
+      "color_name": "empty"
+    },
+    {
+      "segment_id": 6,
+      "start_pixel": 22,
+      "end_pixel": 23,
+      "height": 1,
+      "mean_hue": 85.28571428571428,
+      "color_name": "empty"
+    },
+    {
+      "segment_id": 7,
+      "start_pixel": 23,
+      "end_pixel": 24,
+      "height": 1,
+      "mean_hue": 71.42857142857143,
+      "color_name": "empty"
+    },
+    {
+      "segment_id": 8,
+      "start_pixel": 24,
+      "end_pixel": 25,
+      "height": 1,
+      "mean_hue": 57.57142857142857,
+      "color_name": "unknown"
+    },
+    {
+      "segment_id": 9,
+      "start_pixel": 25,
+      "end_pixel": 26,
+      "height": 1,
+      "mean_hue": 43.71428571428571,
+      "color_name": "unknown"
+    },
+    {
+      "segment_id": 10,
+      "start_pixel": 26,
+      "end_pixel": 27,
+      "height": 1,
+      "mean_hue": 29.857142857142854,
+      "color_name": "orange"
+    },
+    {
+      "segment_id": 11,
+      "start_pixel": 27,
+      "end_pixel": 84,
+      "height": 57,
+      "mean_hue": 16.01503759398496,
+      "color_name": "orange"
+    },
+    {
+      "segment_id": 12,
+      "start_pixel": 84,
+      "end_pixel": 85,
+      "height": 1,
+      "mean_hue": 26.14285714285714,
+      "color_name": "orange"
+    },
+    {
+      "segment_id": 13,
+      "start_pixel": 85,
+      "end_pixel": 86,
+      "height": 1,
+      "mean_hue": 37.42857142857142,
+      "color_name": "orange"
+    },
+    {
+      "segment_id": 14,
+      "start_pixel": 86,
+      "end_pixel": 87,
+      "height": 1,
+      "mean_hue": 48.71428571428571,
+      "color_name": "unknown"
+    },
+    {
+      "segment_id": 15,
+      "start_pixel": 87,
+      "end_pixel": 88,
+      "height": 1,
+      "mean_hue": 59.99999999999999,
+      "color_name": "unknown"
+    },
+    {
+      "segment_id": 16,
+      "start_pixel": 88,
+      "end_pixel": 89,
+      "height": 1,
+      "mean_hue": 71.28571428571428,
+      "color_name": "cyan"
+    },
+    {
+      "segment_id": 17,
+      "start_pixel": 89,
+      "end_pixel": 90,
+      "height": 1,
+      "mean_hue": 82.57142857142857,
+      "color_name": "cyan"
+    },
+    {
+      "segment_id": 18,
+      "start_pixel": 90,
+      "end_pixel": 147,
+      "height": 57,
+      "mean_hue": 94.88972431077696,
+      "color_name": "cyan"
+    },
+    {
+      "segment_id": 19,
+      "start_pixel": 147,
+      "end_pixel": 148,
+      "height": 1,
+      "mean_hue": 80.71428571428571,
+      "color_name": "cyan"
+    },
+    {
+      "segment_id": 20,
+      "start_pixel": 148,
+      "end_pixel": 149,
+      "height": 1,
+      "mean_hue": 69.57142857142858,
+      "color_name": "unknown"
+    },
+    {
+      "segment_id": 21,
+      "start_pixel": 149,
+      "end_pixel": 150,
+      "height": 1,
+      "mean_hue": 58.42857142857143,
+      "color_name": "unknown"
+    },
+    {
+      "segment_id": 22,
+      "start_pixel": 150,
+      "end_pixel": 151,
+      "height": 1,
+      "mean_hue": 47.28571428571429,
+      "color_name": "tan"
+    },
+    {
+      "segment_id": 23,
+      "start_pixel": 151,
+      "end_pixel": 152,
+      "height": 1,
+      "mean_hue": 36.14285714285714,
+      "color_name": "tan"
+    },
+    {
+      "segment_id": 24,
+      "start_pixel": 152,
+      "end_pixel": 153,
+      "height": 1,
+      "mean_hue": 26.571428571428566,
+      "color_name": "tan"
+    },
+    {
+      "segment_id": 25,
+      "start_pixel": 153,
+      "end_pixel": 271,
+      "height": 118,
+      "mean_hue": 16.876513317191286,
+      "color_name": "tan"
+    }
+  ]
+}

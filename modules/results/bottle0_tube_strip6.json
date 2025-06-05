@@ -1,0 +1,285 @@
+{
+  "image": "bottle0_tube_strip6.png",
+  "segments": [
+    {
+      "segment_id": 1,
+      "start_pixel": 0,
+      "end_pixel": 1,
+      "height": 1,
+      "mean_hue": 65.14285714285714,
+      "color_name": "empty"
+    },
+    {
+      "segment_id": 2,
+      "start_pixel": 1,
+      "end_pixel": 2,
+      "height": 1,
+      "mean_hue": 81.42857142857142,
+      "color_name": "empty"
+    },
+    {
+      "segment_id": 3,
+      "start_pixel": 2,
+      "end_pixel": 3,
+      "height": 1,
+      "mean_hue": 97.7142857142857,
+      "color_name": "empty"
+    },
+    {
+      "segment_id": 4,
+      "start_pixel": 3,
+      "end_pixel": 23,
+      "height": 20,
+      "mean_hue": 113.99999999999997,
+      "color_name": "empty"
+    },
+    {
+      "segment_id": 5,
+      "start_pixel": 23,
+      "end_pixel": 24,
+      "height": 1,
+      "mean_hue": 99.85714285714283,
+      "color_name": "empty"
+    },
+    {
+      "segment_id": 6,
+      "start_pixel": 24,
+      "end_pixel": 25,
+      "height": 1,
+      "mean_hue": 85.85714285714285,
+      "color_name": "empty"
+    },
+    {
+      "segment_id": 7,
+      "start_pixel": 25,
+      "end_pixel": 26,
+      "height": 1,
+      "mean_hue": 71.85714285714286,
+      "color_name": "empty"
+    },
+    {
+      "segment_id": 8,
+      "start_pixel": 26,
+      "end_pixel": 27,
+      "height": 1,
+      "mean_hue": 57.857142857142854,
+      "color_name": "unknown"
+    },
+    {
+      "segment_id": 9,
+      "start_pixel": 27,
+      "end_pixel": 28,
+      "height": 1,
+      "mean_hue": 43.857142857142854,
+      "color_name": "orange"
+    },
+    {
+      "segment_id": 10,
+      "start_pixel": 28,
+      "end_pixel": 29,
+      "height": 1,
+      "mean_hue": 29.85714285714285,
+      "color_name": "orange"
+    },
+    {
+      "segment_id": 11,
+      "start_pixel": 29,
+      "end_pixel": 85,
+      "height": 56,
+      "mean_hue": 15.989795918367346,
+      "color_name": "orange"
+    },
+    {
+      "segment_id": 12,
+      "start_pixel": 85,
+      "end_pixel": 86,
+      "height": 1,
+      "mean_hue": 31.71428571428571,
+      "color_name": "orange"
+    },
+    {
+      "segment_id": 13,
+      "start_pixel": 86,
+      "end_pixel": 87,
+      "height": 1,
+      "mean_hue": 45.14285714285714,
+      "color_name": "unknown"
+    },
+    {
+      "segment_id": 14,
+      "start_pixel": 87,
+      "end_pixel": 88,
+      "height": 1,
+      "mean_hue": 58.57142857142857,
+      "color_name": "unknown"
+    },
+    {
+      "segment_id": 15,
+      "start_pixel": 88,
+      "end_pixel": 89,
+      "height": 1,
+      "mean_hue": 72.0,
+      "color_name": "unknown"
+    },
+    {
+      "segment_id": 16,
+      "start_pixel": 89,
+      "end_pixel": 90,
+      "height": 1,
+      "mean_hue": 85.42857142857142,
+      "color_name": "blue"
+    },
+    {
+      "segment_id": 17,
+      "start_pixel": 90,
+      "end_pixel": 91,
+      "height": 1,
+      "mean_hue": 98.99999999999999,
+      "color_name": "blue"
+    },
+    {
+      "segment_id": 18,
+      "start_pixel": 91,
+      "end_pixel": 148,
+      "height": 57,
+      "mean_hue": 110.18045112781954,
+      "color_name": "blue"
+    },
+    {
+      "segment_id": 19,
+      "start_pixel": 148,
+      "end_pixel": 149,
+      "height": 1,
+      "mean_hue": 99.42857142857142,
+      "color_name": "blue"
+    },
+    {
+      "segment_id": 20,
+      "start_pixel": 149,
+      "end_pixel": 150,
+      "height": 1,
+      "mean_hue": 83.7142857142857,
+      "color_name": "unknown"
+    },
+    {
+      "segment_id": 21,
+      "start_pixel": 150,
+      "end_pixel": 151,
+      "height": 1,
+      "mean_hue": 68.0,
+      "color_name": "unknown"
+    },
+    {
+      "segment_id": 22,
+      "start_pixel": 151,
+      "end_pixel": 152,
+      "height": 1,
+      "mean_hue": 52.285714285714285,
+      "color_name": "rose"
+    },
+    {
+      "segment_id": 23,
+      "start_pixel": 152,
+      "end_pixel": 153,
+      "height": 1,
+      "mean_hue": 36.57142857142857,
+      "color_name": "rose"
+    },
+    {
+      "segment_id": 24,
+      "start_pixel": 153,
+      "end_pixel": 154,
+      "height": 1,
+      "mean_hue": 18.285714285714285,
+      "color_name": "rose"
+    },
+    {
+      "segment_id": 25,
+      "start_pixel": 154,
+      "end_pixel": 209,
+      "height": 55,
+      "mean_hue": 0.0,
+      "color_name": "rose"
+    },
+    {
+      "segment_id": 26,
+      "start_pixel": 209,
+      "end_pixel": 210,
+      "height": 1,
+      "mean_hue": 12.285714285714285,
+      "color_name": "rose"
+    },
+    {
+      "segment_id": 27,
+      "start_pixel": 210,
+      "end_pixel": 211,
+      "height": 1,
+      "mean_hue": 24.57142857142857,
+      "color_name": "rose"
+    },
+    {
+      "segment_id": 28,
+      "start_pixel": 211,
+      "end_pixel": 212,
+      "height": 1,
+      "mean_hue": 36.857142857142854,
+      "color_name": "rose"
+    },
+    {
+      "segment_id": 29,
+      "start_pixel": 212,
+      "end_pixel": 213,
+      "height": 1,
+      "mean_hue": 49.14285714285714,
+      "color_name": "white"
+    },
+    {
+      "segment_id": 30,
+      "start_pixel": 213,
+      "end_pixel": 214,
+      "height": 1,
+      "mean_hue": 61.42857142857142,
+      "color_name": "white"
+    },
+    {
+      "segment_id": 31,
+      "start_pixel": 214,
+      "end_pixel": 215,
+      "height": 1,
+      "mean_hue": 73.71428571428571,
+      "color_name": "white"
+    },
+    {
+      "segment_id": 32,
+      "start_pixel": 215,
+      "end_pixel": 269,
+      "height": 54,
+      "mean_hue": 86.0,
+      "color_name": "white"
+    },
+    {
+      "segment_id": 33,
+      "start_pixel": 269,
+      "end_pixel": 270,
+      "height": 1,
+      "mean_hue": 73.71428571428571,
+      "color_name": "white"
+    },
+    {
+      "segment_id": 34,
+      "start_pixel": 270,
+      "end_pixel": 271,
+      "height": 1,
+      "mean_hue": 61.42857142857142,
+      "color_name": "white"
+    },
+    {
+      "segment_id": 35,
+      "start_pixel": 271,
+      "end_pixel": 272,
+      "height": 1,
+      "mean_hue": 49.14285714285714,
+      "color_name": "white"
+    }
+  ]
+}
