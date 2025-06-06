@@ -14,9 +14,9 @@ A Python script that takes the image sample(shown below) as input and gives the 
 
 ### Sample Output
 
-For the image `assets/bottle0.jpeg`:
+For the image `assets/bottle0.jpeg` the `bottle0_analysis.json` would be as follows:
 
-```json```
+```json
 {
   "tube0": [
     "red",
@@ -37,8 +37,8 @@ For the image `assets/bottle0.jpeg`:
     "lime"
   ],
 .....and so on.....
-
 ```
+
 ### ⚠️ Prerequisites
 
 1. `git` installed and properly setup.
@@ -73,10 +73,13 @@ git clone https://github.com/jack-thesparrow/tube-color-detect.git
 
 or if you have git SSH setup the you can do:
 
-```shell```
+```shell
 git clone git@github.com:jack-thesparrow/tube-color-detect.git
-
 ```
+
+Now go inside the directory via:
+=======
+
 Now go inside the directory via:
 
 ```shell
