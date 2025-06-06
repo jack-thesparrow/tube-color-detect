@@ -17,12 +17,14 @@ known_colors = {
     "red": scale_hsv(359.2, 62.6, 89.0),
     "tan": scale_hsv(32.7, 35.6, 87.1),
     "rose": scale_hsv(359.3, 35.3, 98.8),
-    "purple": [138, 183, 199],
+    "purple": [138, 183, 199],  # Already in OpenCV HSV format
     "blue": scale_hsv(219.9, 76.2, 98.0),
     "white": scale_hsv(180.0, 3.7, 94.1),
     "orange": scale_hsv(32.2, 87.7, 99.2),
     "cyan": scale_hsv(189.5, 85.5, 81.2),
     "lime": scale_hsv(119.1, 63.4, 79.2),
+    "lavender": scale_hsv(255.6, 22.7, 87.8),  # From your data
+    "brown": scale_hsv(0.3, 52.9, 56.6),  # Average of your brown values
     "empty": scale_hsv(226, 37, 21),
 }
 
@@ -36,12 +38,13 @@ tolerances = {
     "orange": (5, 40, 40),
     "cyan": (5, 40, 40),
     "lime": (5, 40, 40),
-    "black": (5, 50, 40),
+    "lavender": (4, 20, 20),
+    "brown": (5, 30, 30),
     "empty": (7, 30, 30),
 }
 
-MIN_ROW_PIXEL_COUNT = 50
-MIN_SEGMENT_AREA = 95
+MIN_ROW_PIXEL_COUNT = 70
+MIN_SEGMENT_AREA = 15
 ROW_STEP = 7
 
 
@@ -154,13 +157,18 @@ def approximate_wide_bands(results, global_min):
     return adjusted_results
 
 
-def analyze_tubes(tubes_dir, save_json=True, output_path="tube_analysis.json"):
+def analyze_tubes(
+    tubes_dir, save_json=True, combined_json_path=None, filter_prefix=None
+):
     results = {}
     all_segment_areas = []
 
     for filename in sorted(os.listdir(tubes_dir)):
         if not filename.lower().endswith(".png"):
             continue
+        if filter_prefix and not filename.startswith(filter_prefix):
+            continue
+
         img_path = os.path.join(tubes_dir, filename)
         img = cv.imread(img_path)
         if img is None:
@@ -177,13 +185,15 @@ def analyze_tubes(tubes_dir, save_json=True, output_path="tube_analysis.json"):
         all_segment_areas.extend(color_areas.values())
 
     global_min_area = min(all_segment_areas) if all_segment_areas else None
-    print(f"\nGlobal least area from all segments: {global_min_area}")
-
     adjusted_results = approximate_wide_bands(results, global_min_area)
 
-    if save_json:
-        with open(output_path, "w") as f:
-            json.dump(adjusted_results, f, indent=2)
-        print(f"\nSaved analysis to: {output_path}")
+    if save_json and combined_json_path:
+        simplified_output = {}
+        for idx, (fname, data) in enumerate(adjusted_results.items()):
+            simplified_output[f"tube{idx}"] = data["order"]
+
+        with open(combined_json_path, "w") as f:
+            json.dump(simplified_output, f, indent=2)
+        print(f"📄 Saved: {combined_json_path}")
 
     return adjusted_results
