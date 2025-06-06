@@ -4,7 +4,7 @@
 
 A Python script that takes the image sample(shown below) as input and gives the colors in the tubes in order in image_name_analysis.json
 
-### Sample Input Images
+## Sample Input Images
 
 <div allign = "center">
     <img align="center" src ="assets/bottle0.jpeg" width ="200">
@@ -12,7 +12,7 @@ A Python script that takes the image sample(shown below) as input and gives the 
     <img align="center" src ="assets/bottle2.jpeg" width ="200">
 </div>
 
-### Sample Output
+## Sample Output
 
 For the image `assets/bottle0.jpeg` the `bottle0_analysis.json` would be as follows:
 
@@ -39,7 +39,7 @@ For the image `assets/bottle0.jpeg` the `bottle0_analysis.json` would be as foll
 .....and so on.....
 ```
 
-### ⚠️ Prerequisites
+## ⚠️ Prerequisites
 
 1. `git` installed and properly setup.
 
@@ -76,12 +76,7 @@ or if you have git SSH setup the you can do:
 ```shell
 git clone git@github.com:jack-thesparrow/tube-color-detect.git
 ```
-
-Now go inside the directory via:
-=======
-
-Now go inside the directory via:
-
+#### Now go inside the directory via:
 ```shell
 cd tube-color-detect
 ```
