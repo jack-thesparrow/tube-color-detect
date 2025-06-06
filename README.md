@@ -39,7 +39,6 @@ For the image `assets/bottle0.jpeg`:
 .....and so on.....
 
 ```
-
 ### ⚠️ Prerequisites
 
 1. `git` installed and properly setup.
@@ -76,8 +75,8 @@ or if you have git SSH setup the you can do:
 
 ```shell```
 git clone git@github.com:jack-thesparrow/tube-color-detect.git
-```
 
+```
 Now go inside the directory via:
 
 ```shell
@@ -100,10 +99,10 @@ python main.py <image_name.png>
 
 ### 🌚 Our Team (Core Contributors)
 
-- [Rahul Tudu]([jack-thesparrow (Jack The Sparrow ) · GitHub](https://github.com/jack-thesparrow)) 
+- [Rahul Tudu](https://github.com/jack-thesparrow) 
 
-- [Prince Patel]([princepatel1526 (Prince_Patel) · GitHub](https://github.com/princepatel1526))
+- [Prince Patel](https://github.com/princepatel1526)
 
-- [Dev Varshini]([varshi06-maker (Deva varshini Routhu) · GitHub](https://github.com/varshi06-maker))
+- [Dev Varshini](https://github.com/varshi06-maker)
 
-- [Satya Keertika]([Satyakeerthika07 · GitHub](https://github.com/Satyakeerthika07))
+- [Satya Keertika](https://github.com/Satyakeerthika07)
