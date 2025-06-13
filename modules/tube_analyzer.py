@@ -17,14 +17,14 @@ known_colors = {
     "red": scale_hsv(359.2, 62.6, 89.0),
     "tan": scale_hsv(32.7, 35.6, 87.1),
     "rose": scale_hsv(359.3, 35.3, 98.8),
-    "purple": [138, 183, 199],  # Already in OpenCV HSV format
+    "purple": [138, 183, 199],  # Already in OpenCV HSV format because purple was too sensitive
     "blue": scale_hsv(219.9, 76.2, 98.0),
     "white": scale_hsv(180.0, 3.7, 94.1),
     "orange": scale_hsv(32.2, 87.7, 99.2),
     "cyan": scale_hsv(189.5, 85.5, 81.2),
     "lime": scale_hsv(119.1, 63.4, 79.2),
-    "lavender": scale_hsv(255.6, 22.7, 87.8),  # From your data
-    "brown": scale_hsv(0.3, 52.9, 56.6),  # Average of your brown values
+    "lavender": scale_hsv(255.6, 22.7, 87.8),
+    "brown": scale_hsv(0.3, 52.9, 56.6),
     "empty": scale_hsv(226, 37, 21),
 }
 
@@ -43,11 +43,12 @@ tolerances = {
     "empty": (7, 30, 30),
 }
 
+###HEHE here are main parameters to tweak if you get too much segmentation,etc.
 MIN_ROW_PIXEL_COUNT = 70
 MIN_SEGMENT_AREA = 15
 ROW_STEP = 7
 
-
+##To get the region where the color is found(masking)
 def get_strict_mask(hsv_img, color, tol):
     h, s, v = color
     h_tol, s_tol, v_tol = tol
@@ -78,7 +79,7 @@ def get_strict_mask(hsv_img, color, tol):
         upper = np.array([h + h_range, upper_s, upper_v], dtype=np.uint8)
         return cv.inRange(hsv_img, lower, upper)
 
-
+##dividing the colors into segments if they are consecutive
 def get_color_segments(hsv_img, known_colors, tolerances, row_step=ROW_STEP):
     height = hsv_img.shape[0]
     last_color = None
@@ -108,7 +109,7 @@ def get_color_segments(hsv_img, known_colors, tolerances, row_step=ROW_STEP):
         segments.append((last_color, start_row, height))
     return segments
 
-
+## To merge the segments if they are too segmented
 def merge_adjacent_segments(segments, min_height=8):
     if not segments:
         return []
@@ -122,7 +123,7 @@ def merge_adjacent_segments(segments, min_height=8):
             merged.append((color, start, end))
     return merged
 
-
+## To get the area of the segments to later know the number of slots occupied by a color
 def get_segment_areas(hsv_img, segments, known_colors, tolerances):
     segment_areas = {}
     band_counts = {}
@@ -137,7 +138,7 @@ def get_segment_areas(hsv_img, segments, known_colors, tolerances):
         segment_areas[key] = area
     return segment_areas
 
-
+## Final adjusment of the color bands
 def approximate_wide_bands(results, global_min):
     adjusted_results = {}
     for filename, data in results.items():
@@ -156,7 +157,7 @@ def approximate_wide_bands(results, global_min):
         }
     return adjusted_results
 
-
+## Analysis of the whole thing by using the defined functions and giving the json output
 def analyze_tubes(
     tubes_dir, save_json=True, combined_json_path=None, filter_prefix=None
 ):

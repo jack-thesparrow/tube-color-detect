@@ -4,33 +4,7 @@ import numpy as np
 import os
 from modules.tube_analyzer import *
 
-# === Your Known Colors with updated purple ===
-known_colors = {
-    "red": scale_hsv(359.2, 62.6, 89.0),
-    "tan": scale_hsv(32.7, 35.6, 87.1),
-    "rose": scale_hsv(359.3, 35.3, 98.8),
-    "purple": [138, 183, 199],  # manually tuned values for purple
-    "blue": scale_hsv(219.9, 76.2, 98.0),
-    "white": scale_hsv(180.0, 3.7, 94.1),
-    "orange": scale_hsv(32.2, 87.7, 99.2),
-    "cyan": scale_hsv(189.5, 85.5, 81.2),
-    "lime": scale_hsv(119.1, 63.4, 79.2),
-}
-
-# === Per-Color Tolerances (H, S, V) ===
-tolerances = {
-    "red": (5, 40, 40),
-    "tan": (5, 40, 40),
-    "rose": (5, 40, 40),
-    "purple": (4, 40, 40),  # Hue ±4, Sat ±40, Val ±40
-    "blue": (5, 40, 40),
-    "white": (5, 30, 30),
-    "orange": (5, 40, 40),
-    "cyan": (5, 40, 40),
-    "lime": (5, 40, 40),
-}
-
-
+# For image segmentation to get dominant color
 def segment_image(img: np.ndarray, n_clusters: int = 7) -> np.ndarray:
     """
     Applies KMeans color segmentation to an image and returns the segmented image.
