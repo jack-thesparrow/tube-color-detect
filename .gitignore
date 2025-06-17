@@ -27,7 +27,7 @@ share/python-wheels/
 MANIFEST
 
 # Nix packaging files
-flake*
+#flake*
 
 # PyInstaller
 #  Usually these files are written by a python script from a template
