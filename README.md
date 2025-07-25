@@ -92,6 +92,7 @@ pip install -r requirements.txt
 ```shell
 python main.py <image_name.png>
 ```
+Sample images are provided in the `assets` directory.
 
 <I>The saved output will be stored in <B>image_name_analysis.json</B></I>
 
